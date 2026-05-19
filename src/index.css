@@ -1,0 +1,64 @@
+@import "tailwindcss";
+
+@layer base {
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    background: #0a0e1a;
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    min-height: 100vh;
+  }
+
+  #root {
+    width: 100%;
+    min-height: 100vh;
+  }
+}
+
+@keyframes levelUpPulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.85; transform: scale(1.04); }
+}
+
+@keyframes questComplete {
+  0% { box-shadow: 0 0 0 0 rgba(74, 222, 128, 0.8); }
+  70% { box-shadow: 0 0 0 16px rgba(74, 222, 128, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(74, 222, 128, 0); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-40px) scale(0.9); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes fadeOutUp {
+  from { opacity: 1; transform: translateY(0) scale(1); }
+  to   { opacity: 0; transform: translateY(-40px) scale(0.9); }
+}
+
+.level-up-banner {
+  animation: fadeInDown 0.4s ease, levelUpPulse 0.6s ease 0.4s infinite;
+}
+
+.level-up-banner.hiding {
+  animation: fadeOutUp 0.4s ease forwards;
+}
+
+.quest-complete-flash {
+  animation: questComplete 0.8s ease;
+}
+
+.exp-bar-fill {
+  background: linear-gradient(90deg, #22c55e, #86efac, #22c55e);
+  background-size: 200% auto;
+  animation: shimmer 2s linear infinite;
+}
